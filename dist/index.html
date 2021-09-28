@@ -7,7 +7,7 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css"></link>
-<script  src="main.js"></script>
+<script  src="bundle.js"></script>
   </head>
 <body>
   <div id="editorjs" style="max-width: 1000px; margin: 0 auto;width: auto;height: 500px;"></div>
@@ -28,7 +28,7 @@
  * Initialize the Editor
  */
 //  import SimpleImage from '../src/index.js';
-// const List=require('../src/index.js');
+ const SimpleImage=require('../src/index.js');
 
 const editor = new EditorJS({
   holder: 'editorjs', 
@@ -42,22 +42,22 @@ const editor = new EditorJS({
     },
    
   },
-  // data: {
-  //   time: 1552744582955,
-  //   blocks: [
-  //     {
-  //       type: "image",
-  //       data: {
-  //         math:"\\relax{x} = \\int_{-\\infty}^\\infty\\hat\\xi,e^{2 \\pi i \\xi x},d\\xi",
+  data: {
+    time: 1552744582955,
+    blocks: [
+      {
+        type: "image",
+        data: {
+          math:"\\relax{x} = \\int_{-\\infty}^\\infty\\hat\\xi,e^{2 \\pi i \\xi x},d\\xi",
           
-  //         withBorder: false,
-  //         withBackground: false,
-  //         stretched: false
-  //       }
-  //     }
-  //   ],
-  //   version: "2.11.10"
-  // }
+          withBorder: false,
+          withBackground: false,
+          stretched: false
+        }
+      }
+    ],
+    version: "2.11.10"
+  }
 });
 
 /**
@@ -67,6 +67,7 @@ const saveButton = document.getElementById('save-button');
 const output = document.getElementById('output');
 
 saveButton.addEventListener('click', () => {
+  alert('save button clicked.')
   editor.save().then( savedData => {
     output.innerHTML = JSON.stringify(savedData, null, 4);
   })
